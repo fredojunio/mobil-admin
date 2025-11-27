@@ -387,15 +387,15 @@
             </div>
           </div> -->
         <!-- </div> -->
-        <div class="grid grid-cols-2 gap-x-2 justify-center items-center">
-          <!-- <div class="relative flex items-start col-span-2">
+        <!-- <div class="grid grid-cols-2 gap-x-2 justify-center items-center"> -->
+        <!-- <div class="relative flex items-start col-span-2">
             <div class="text-sm">
               <label for="sak" class="font-medium text-gray-700"
                 >Sak - Stok: {{ sacks }}</label
               >
             </div>
           </div> -->
-          <div class="relative flex items-start">
+        <!-- <div class="relative flex items-start">
             <div class="text-sm">
               <label for="sak" class="font-medium text-gray-700"
                 >Berbayar</label
@@ -406,8 +406,8 @@
             <div class="text-sm">
               <label for="sak" class="font-medium text-gray-700">Gratis</label>
             </div>
-          </div>
-          <div class="mt-1">
+          </div> -->
+        <!-- <div class="mt-1">
             <input
               id="sak"
               v-model="newTransaction.sack"
@@ -424,8 +424,8 @@
               type="number"
               class="shadow-sm disabled:bg-gray-100 focus:ring-black focus:border-black block w-full sm:text-sm border border-gray-300 rounded-md py-1 px-2"
             />
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
         <div class="sm:col-span-6">
           <label for="discount" class="block text-sm font-medium text-gray-700">
             Lain-lain (Rp.)
@@ -534,22 +534,6 @@
           <div class="flex justify-end">
             <button
               type="button"
-              :disabled="
-                selectedCustomer.id == null ||
-                newTransaction.rits.some(
-                  (rit) => rit.item.tonnage_left < rit.tonnage * rit.masak
-                ) ||
-                newTransaction.rits.some((rit) => rit.tonnage <= 0) ||
-                newTransaction.sack + newTransaction.sack_free > sacks ||
-                (newTransaction.sack == null &&
-                  newTransaction.sack_free == null) ||
-                (newTransaction.sack < 0 && newTransaction.sack_free < 0) ||
-                (newTransaction.rits.length == 0 &&
-                  newTransaction.sack <= 0 &&
-                  newTransaction.tb <= 0 &&
-                  newTransaction.thr <= 0 &&
-                  newTransaction.tw <= 0)
-              "
               @click="showConfirmationPopup = true"
               class="disabled:opacity-50 ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
             >
@@ -823,7 +807,7 @@ export default {
         item: {
           code: null,
         },
-        tonnage: null,
+        tonnage: 1,
         real_tonnage: 0,
         masak: 1,
         price: null,
@@ -1092,31 +1076,31 @@ export default {
       vehicles: [],
       newTransaction: {
         customer_id: null,
-        ongkir: null,
+        ongkir: 0,
         vehicle_id: null,
         allowance: null,
-        gas: null,
-        toll: null,
+        gas: 0,
+        toll: 0,
         rits: [],
-        tb: null,
-        tw: null,
-        thr: null,
-        sack: null,
-        sack_free: null,
-        other: null,
-        item_prices: null,
-        discount: null,
-        total_price: null,
+        tb: 0,
+        tw: 0,
+        thr: 0,
+        sack: 0,
+        sack_free: 0,
+        other: 0,
+        item_prices: 0,
+        discount: 0,
+        total_price: 0,
         old_id: null,
         date: new Date(new Date().setHours(7, 0, 0, 0))
           .toISOString()
           .substr(0, 10),
       },
-      money_brought: null,
+      money_brought: 0,
       calculator: {
         rit: { sell_price: 0 },
-        tonnage: null,
-        price: null,
+        tonnage: 0,
+        price: 0,
       },
     };
   },
